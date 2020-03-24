@@ -85,10 +85,10 @@
                 </div>
 
                 <div class="links">
-                    <a href="/">Start Shopping</a>
-                    <a href="/">Print your Own TeaShirt</a>
-                    <a href="/">About Us</a>
-                    <a href="/">Contact</a>
+                    <a href="/teashirt/public/">Start Shopping</a>
+                    <a href="/teashirt/public/">Print your Own TeaShirt</a>
+                    <a href="/teashirt/public/">About Us</a>
+                    <a href="/teashirt/public/">Contact</a>
                 </div>
             </div>
         </div>
