@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <link rel="shortcut icon" href="\teashirt\resources\images\favicon.ico" type="image/x-icon">
         <!-- Styles -->
         <style>
             html, body {
@@ -80,6 +80,7 @@
             @endif
 
             <div class="content">
+                <img src="\teashirt\resources\images\logo.png" alt="TeaShirt" class="centered">
                 <div class="title m-b-md">
                     Welcome to Teashirt
                 </div>
