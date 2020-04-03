@@ -14,3 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'PagesController@index');
+// Route::get('/{{$page}}', 'Pagescontroller@{{$page}}');
+Route::get('/design', 'PagesController@design');
+Route::get('/about', 'PagesController@about');
+Route::get('/cart', 'PagesController@cart');
+Route::get('/checkout', 'PagesController@checkout');
+Route::get('/contact', 'PagesController@contact');
