@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="shortcut icon" href="\teashirt\resources\images\favicon.ico" type="image/x-icon">
         <!-- Styles -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <style>
             html, body {
                 background-color: #fff;
@@ -64,6 +65,7 @@
         </style>
     </head>
     <body>
+        @extends('inc.navbar')
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -86,10 +88,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="/teashirt/public/">Start Shopping</a>
-                    <a href="/teashirt/public/">Print your Own TeaShirt</a>
-                    <a href="/teashirt/public/">About Us</a>
-                    <a href="/teashirt/public/">Contact</a>
+                    <a href="/teashirt/public/"><h2>Start Shopping</h2></a>
                 </div>
             </div>
         </div>
