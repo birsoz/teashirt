@@ -6,7 +6,7 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            {{-- <li class="nav-item active">
                 <a class="nav-link" href="/teashirt/public/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -17,9 +17,41 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/teashirt/public/contact">Contact</a>
+            </li> --}}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Women!</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#">T-Shirts</a>
+                    <a class="dropdown-item" href="#">Jumpers</a>
+                    <a class="dropdown-item" href="#">Jackets</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Men</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#">T-Shirts</a>
+                    <a class="dropdown-item" href="#">Jumpers</a>
+                    <a class="dropdown-item" href="#">Jackets</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Children</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#">T-Shirts</a>
+                    <a class="dropdown-item" href="#">Jumpers</a>
+                    <a class="dropdown-item" href="#">Jackets</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Accessories</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#">Tote Bags</a>
+                    <a class="dropdown-item" href="#">Bandanas</a>
+                    <a class="dropdown-item" href="#">Hats</a>
+                </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/teashirt/public/checkout">Checkout</a>
+                <a class="nav-link active" href="/teashirt/public/sale">Sale</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/teashirt/public/cart" tabindex="-1" aria-disabled="true">Cart</a>
