@@ -13,8 +13,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <style>
             html, body {
-                padding-top: 75px;
-                padding: 65 px;
+                padding: 65px;
                 background-color: #fff;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
