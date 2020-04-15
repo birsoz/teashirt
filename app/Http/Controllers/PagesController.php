@@ -10,9 +10,9 @@ class PagesController extends Controller
     {
         return view('pages.index');
     }
-    public function design()
+    public function sale()
     {
-        return view('pages.design');
+        return view('pages.sale');
     }
     public function about()
     {
