@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'PagesController@index');
+//Commented out, because PagesController doesnt have $products variable
+// Route::get('/', 'PagesController@index');
+Route::get('/', 'ProductsController@index');
 // Route::get('/{{$page}}', 'Pagescontroller@{{$page}}');
 Route::get('/sale', 'PagesController@sale');
 Route::get('/about', 'PagesController@about');
