@@ -19,3 +19,4 @@ Route::get('/sale', 'PagesController@sale');
 Route::get('/about', 'PagesController@about');
 Route::get('/cart', 'PagesController@cart');
 
+Route::resource('products', 'ProductsController');
