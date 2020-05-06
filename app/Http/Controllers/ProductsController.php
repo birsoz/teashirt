@@ -14,7 +14,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::orderBy('id','desc')->paginate(5);
+        //I will do search results by the following line.
+        //$products = Product::where('SKU', 'TS 0005')->get();
         return view('pages.index')->with('products', $products);  
     }
 
@@ -47,7 +49,8 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::find($id);
+        return view('pages.show')->with('product', $product);
     }
 
     /**
