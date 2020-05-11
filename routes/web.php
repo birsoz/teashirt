@@ -21,3 +21,6 @@ Route::get('/about', 'PagesController@about');
 Route::get('/cart', 'PagesController@cart');
 
 Route::resource('products', 'ProductsController');
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
