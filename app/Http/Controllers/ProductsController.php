@@ -27,7 +27,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.create');
     }
 
     /**
@@ -38,7 +38,20 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'SKU' => 'required',
+            'description'=> 'required'
+
+        ]);
+        //create a product
+        $product=new Product;
+        $product-> SKU = $request->input('SKU');
+        $product-> Description = $request->input('description');
+        $product->save();
+
+        return redirect('/products')->with('success', 'Product Created');
+
+
     }
 
     /**
@@ -61,7 +74,8 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('pages.edit')->with('product', $product);
     }
 
     /**
@@ -73,7 +87,18 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'SKU' => 'required',
+            'description'=> 'required'
+
+        ]);
+        //create a product
+        $product= Product::find($id);
+        $product-> SKU = $request->input('SKU');
+        $product-> Description = $request->input('description');
+        $product->save();
+
+        return redirect('/products')->with('success', 'Product Edited');
     }
 
     /**
@@ -84,6 +109,9 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product= Product::find($id);
+        $product->delete();
+
+        return redirect('/products')->with('success', 'Product Deleted');
     }
 }

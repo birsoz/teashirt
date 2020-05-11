@@ -7,4 +7,9 @@
     <div class="btn-group">
         <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
     </div>
+        <a href="/teashirt/public/products/{{$product->id}}/edit" class="btn btn-primary">Edit Item</a>
+        {!! Form::open(['ProductsContrller@destroy', $product->id],['method'=>'POST', 'class'=> 'pull-right']) !!}
+        {{ Form::hidden('_method', 'DELETE') }}
+        {{ Form::submit('Delete', ['class'=> 'btn btn-danger']) }}
+        {!! Form::close()!!}
 @endsection
