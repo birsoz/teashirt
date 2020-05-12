@@ -87,35 +87,17 @@
                         </form>
                     </div>
                 </li>
+                @if (Auth::user()->user_type)
+                    <ul class="nav nav-link navbar-right">
+                        <li><a href="/teashirt/public/products/create" class="">Add an Item</a></li>
+                    </ul>
+                @endif
             @endguest
         </ul>
-        <ul class="nav nav-link navbar-right">
-            <li><a href="/teashirt/public/products/create" class="">Add an Item</a></li>
-        </ul>
+        
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
 </nav>
-
-{{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-    <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-
-            </ul>
-
-            <!-- Right Side Of Navbar -->
-            
-        </div>
-    </div>
-</nav> --}}

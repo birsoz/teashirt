@@ -12,6 +12,16 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     public function index()
     {
         $products = Product::orderBy('id','desc')->paginate(5);
@@ -47,6 +57,7 @@ class ProductsController extends Controller
         $product=new Product;
         $product-> SKU = $request->input('SKU');
         $product-> Description = $request->input('description');
+        $product-> user_name = auth()->user()->name;
         $product->save();
 
         return redirect('/products')->with('success', 'Product Created');
@@ -96,6 +107,7 @@ class ProductsController extends Controller
         $product= Product::find($id);
         $product-> SKU = $request->input('SKU');
         $product-> Description = $request->input('description');
+        $product-> user_name = auth()->user()->name;
         $product->save();
 
         return redirect('/products')->with('success', 'Product Edited');
