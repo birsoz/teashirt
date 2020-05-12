@@ -20,7 +20,7 @@
             @foreach ($products  as $product)
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
-                        <img class="card-img-top" src="/{{$product->Image_Source}}" alt="{{$product->SKU}}">
+                        <img class="card-img-top" src="/teashirt/public/storage/images/{{$product->Image_Source}}" alt="{{$product->SKU}}">
                             <div class="card-body">
                             <p class="card-text">{{$product->Description}}</p>
                             <div class="d-flex justify-content-between align-items-center">

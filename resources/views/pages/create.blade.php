@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <h1>Create an Item</h1>
-    {!! Form::open(['action' => 'ProductsController@store', 'method' => 'POST']) !!}
+    {!! Form::open(['action' => 'ProductsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     <div class="form-group">
         {{Form::label('SKU' , 'SKU')}}
         {{Form::text('SKU','',['class' => 'form-control', 'placeholder' => 'SKU'])}}
@@ -11,6 +11,7 @@
         {{Form::label('description' , 'Description')}}
         {{Form::textarea('description','',['class' => 'form-control', 'placeholder' => 'Description'])}}
     </div>
+    {{Form::file('Image_Source')}}
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
     {{-- POST method is not supported error comes out from the following snippet --}}

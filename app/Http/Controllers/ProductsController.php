@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
-
+use Illuminate\Support\Facades\Storage;
 class ProductsController extends Controller
 {
     /**
@@ -54,15 +54,34 @@ class ProductsController extends Controller
     {
         $this->validate($request,[
             'SKU' => 'required',
-            'description'=> 'required'
+            'description'=> 'required',
+            'Image_Source'=> 'image|nullable|max:1999'
 
         ]);
-        
+        //Getting the name and extension
+        if($request->hasFile('Image_Source'))
+        {
+            //filename with the extension(can cause overwriting)
+            $fileNameWithExt = $request->file('Image_Source')->getClientOriginalName();
+            //Instead i will get filename and the extension seperately to concatenate with timestamp
+            //But lets try this
+            //this works actually but can be hard to look for a specific image
+            //or order by name because they all with start with numbers(time)
+            $fileNameToStore = time()."_".$fileNameWithExt;
+            //$path = $request->file('Image_Source')->storeAs('public/images', $fileNameToStore);
+            $path = $request->file('Image_Source')->storeAs('public/images', $fileNameToStore);
+
+        }
+        else{
+            $fileNameToStore='logo.png';
+        }
+
         //create a product
         $product=new Product;
         $product-> SKU = $request->input('SKU');
         $product-> Description = $request->input('description');
         $product-> user_name = auth()->user()->name;
+        $product-> Image_Source = $fileNameToStore;
         $product->save();
 
         return redirect('/products')->with('success', 'Product Created');
@@ -119,11 +138,27 @@ class ProductsController extends Controller
         {
             return redirect('/products')->with('error', 'You are not authorized, please contact your service provider');
         }
+        if($request->hasFile('Image_Source'))
+        {
+            //filename with the extension(can cause overwriting)
+            $fileNameWithExt = $request->file('Image_Source')->getClientOriginalName();
+            //Instead i will get filename and the extension seperately to concatenate with timestamp
+            //But lets try this
+            //this works actually but can be hard to look for a specific image
+            //or order by name because they all with start with numbers(time)
+            $fileNameToStore = time()."_".$fileNameWithExt;
+            //$path = $request->file('Image_Source')->storeAs('public/images', $fileNameToStore);
+            $path = $request->file('Image_Source')->storeAs('public/images', $fileNameToStore);
+
+        }
         //edit a product
         $product= Product::find($id);
         $product-> SKU = $request->input('SKU');
         $product-> Description = $request->input('description');
         $product-> user_name = auth()->user()->name;
+        if($request->hasFile('Image_Source')){
+            $product->Image_Source = $fileNameToStore;
+        }
         $product->save();
 
         return redirect('/products')->with('success', 'Product Edited');
@@ -138,6 +173,9 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         $product= Product::find($id);
+        if($product->Image_Source !='logo.png'){
+            Storage::delete('/public/images/'.$product->Image_Source);
+        }
         $product->delete();
 
         return redirect('/products')->with('success', 'Product Deleted');
