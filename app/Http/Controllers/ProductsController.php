@@ -37,6 +37,10 @@ class ProductsController extends Controller
      */
     public function create()
     {
+        if(!Auth()->user()->user_type)
+    {
+        return redirect('/products')->with('error', 'You are not authorized, please contact your service provider');
+    }
         return view('pages.create');
     }
 
@@ -53,6 +57,7 @@ class ProductsController extends Controller
             'description'=> 'required'
 
         ]);
+        
         //create a product
         $product=new Product;
         $product-> SKU = $request->input('SKU');
@@ -84,7 +89,13 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
+    
     {
+        //check if the user is an admin
+        if(!Auth()->user()->user_type)
+    {
+        return redirect('/products')->with('error', 'You are not authorized, please contact your service provider');
+    }
         $product = Product::find($id);
         return view('pages.edit')->with('product', $product);
     }
@@ -103,7 +114,12 @@ class ProductsController extends Controller
             'description'=> 'required'
 
         ]);
-        //create a product
+        //Check if the user is an admin
+        if(!Auth()->user()->user_type)
+        {
+            return redirect('/products')->with('error', 'You are not authorized, please contact your service provider');
+        }
+        //edit a product
         $product= Product::find($id);
         $product-> SKU = $request->input('SKU');
         $product-> Description = $request->input('description');

@@ -75,7 +75,14 @@
                         <a class="dropdown-item" href="{{ route('dashboard') }}">
                            Dashboard
                         </a>
-                        <a class="dropdown-item" href="/teashirt/public/cart" tabindex="-1" aria-disabled="true">Your Cart</a>
+                        @if (Auth::user()->user_type)
+                        <a class="dropdown-item" href="/teashirt/public/products/create" tabindex="-1" aria-disabled="true">Add an Item</a>
+                            {{-- <ul class="nav nav-link navbar-right">
+                                <li><a href="/teashirt/public/products/create" class="">Add an Item</a></li>
+                            </ul> --}}
+                        @else
+                            <a class="dropdown-item" href="/teashirt/public/cart" tabindex="-1" aria-disabled="true">Your Cart</a>
+                        @endif
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
@@ -87,11 +94,6 @@
                         </form>
                     </div>
                 </li>
-                @if (Auth::user()->user_type)
-                    <ul class="nav nav-link navbar-right">
-                        <li><a href="/teashirt/public/products/create" class="">Add an Item</a></li>
-                    </ul>
-                @endif
             @endguest
         </ul>
         
