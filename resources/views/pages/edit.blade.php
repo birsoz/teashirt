@@ -6,23 +6,27 @@
         {{Form::label('SKU' , 'SKU')}}
         {{Form::text('SKU', $product->SKU, ['class' => 'form-control', 'placeholder' => 'SKU'])}}
     </div>
-    
     <div class="form-group">
         {{Form::label('description' , 'Description')}}
         {{Form::textarea('description', $product->Description, ['class' => 'form-control', 'placeholder' => 'Description'])}}
     </div>
     <div class="form-group">
         {{Form::label('is_active' , 'Is Active?')}}
-        {{Form::checkbox('is_active', $product->is_active, $product->is_active)}}
+        {{Form::checkbox('is_active', true, $product->is_active)}}
+    </div>
+    <div class="form-group">
+        {{Form::label('in_stock' , 'In Stock?')}}
+        {{Form::checkbox('in_stock', true, $product->in_stock)}}
     </div>
     <div class="form-group">
         {{Form::label('in_sale' , 'In Sale?')}}
-        {{Form::checkbox('in_sale', $product->in_sale, $product->in_sale)}}
+        {{Form::checkbox('in_sale', true, $product->in_sale)}}
+    </div>
     <div class="form-group">
         {{Form::label('base_price' , 'Base Price')}}
-        {{Form::number('base_price', $product->base_price)}}
+        {{Form::number('base_price', $product->base_price, ['step'=>'0.01'])}}
         {{Form::label('sale_price' , 'Sale Price')}}
-        {{Form::number('sale_price', $product->sale_price)}}
+        {{Form::number('sale_price', $product->sale_price, ['step'=>'0.01'])}}
     </div>
     <div class="form-group">
         {{Form::label('categories' , 'Categories')}}

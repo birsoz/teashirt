@@ -11,7 +11,7 @@
         @if (Auth::user()->user_type)
         {!! Form::open(['ProductsContrller@destroy', $product->id],['method'=>'POST', 'class'=> 'pull-right']) !!}
         <small>Last Edited by {{$product->user_name}} at {{$product->updated_at}}</small>
-        <a href="/teashirt/public/products/{{$product->id}}/edit" class="btn btn-primary align-right">Edit Item</a>
+        <a href="/teashirt/public/products/{{$product->id}}/edit" class="btn btn-primary">Edit Item</a>
         {{ Form::hidden('_method', 'DELETE') }}
         {{ Form::submit('Delete', ['class'=> 'btn btn-danger']) }}
         {!! Form::close()!!}

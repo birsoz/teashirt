@@ -55,10 +55,10 @@ class ProductsController extends Controller
         $this->validate($request,[
             'SKU' => 'required',
             'description'=> 'required',
-            'Image_Source'=> 'image|nullable|max:1999'
-
+            'Image_Source'=> 'image|nullable|max:1999',
+            'categories' => 'required',
         ]);
-        //Getting the name and extension
+        //Getting the name and extension of the image
         if($request->hasFile('Image_Source'))
         {
             //filename with the extension(can cause overwriting)
@@ -80,6 +80,17 @@ class ProductsController extends Controller
         $product=new Product;
         $product-> SKU = $request->input('SKU');
         $product-> Description = $request->input('description');
+        // $product-> is_active = $request->has('is_active') ? $request->input('is_active') : NULL;
+        // 'in_stock' => $request->has('in_stock') ? $request->input('in_stock') : NULL;
+        // 'in_sale' => $request->has('in_sale') ? $request->input('in_sale') : NULL;
+        $product-> is_active = $request->input('is_active');
+        $product-> in_sale = $request->input('in_sale');
+        $product-> in_stock = $request->input('in_stock');
+        $product-> base_price = $request->input('base_price');
+        $product-> sale_price = $request->input('sale_price');
+        $product-> category = $request->input('categories');
+        $product-> sub_category = $request->input('categories');
+        $product-> tag = $request->input('categories');
         $product-> user_name = auth()->user()->name;
         $product-> Image_Source = $fileNameToStore;
         $product->save();
@@ -155,7 +166,18 @@ class ProductsController extends Controller
         $product= Product::find($id);
         $product-> SKU = $request->input('SKU');
         $product-> Description = $request->input('description');
+        $product-> is_active = $request->input('is_active');
+        $product-> in_sale = $request->input('in_sale');
+        $product-> in_stock = $request->input('in_stock');
+        $product-> base_price = $request->input('base_price');
+        $product-> sale_price = $request->input('sale_price');
+        $product-> category = $request->input('categories');
+        $product-> sub_category = $request->input('categories');
+        $product-> tag = $request->input('categories');
         $product-> user_name = auth()->user()->name;
+        
+        
+        //lets check if a new picture is uploaded
         if($request->hasFile('Image_Source')){
             $product->Image_Source = $fileNameToStore;
         }
