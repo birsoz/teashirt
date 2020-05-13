@@ -13,16 +13,16 @@
     </div>
     <div class="form-group">
         {{Form::label('is_active' , 'Is Active?')}}
-        {{Form::checkbox('is_active', 'value', true)}}
+        {{Form::checkbox('is_active', $product->is_active, $product->is_active)}}
     </div>
     <div class="form-group">
         {{Form::label('in_sale' , 'In Sale?')}}
-        {{Form::checkbox('in_sale', 'value', false)}}
+        {{Form::checkbox('in_sale', $product->in_sale, $product->in_sale)}}
     <div class="form-group">
         {{Form::label('base_price' , 'Base Price')}}
-        {{Form::number('base_price', 'value')}}
+        {{Form::number('base_price', $product->base_price)}}
         {{Form::label('sale_price' , 'Sale Price')}}
-        {{Form::number('sale_price', 'value')}}
+        {{Form::number('sale_price', $product->sale_price)}}
     </div>
     <div class="form-group">
         {{Form::label('categories' , 'Categories')}}
