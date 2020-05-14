@@ -45,8 +45,8 @@
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Accessories</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="/teashirt/public?filter=accessories totebags">Tote Bags</a>
-                    <a class="dropdown-item" href="/teashirt/public?filter=accessories totebags">Bandanas</a>
-                    <a class="dropdown-item" href="/teashirt/public?filter=accessories totebags">Hats</a>
+                    <a class="dropdown-item" href="/teashirt/public?filter=accessories bandanas">Bandanas</a>
+                    <a class="dropdown-item" href="/teashirt/public?filter=accessories hats">Hats</a>
                 </div>
             </li>
             <li class="nav-item">

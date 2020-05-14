@@ -224,4 +224,9 @@ class ProductsController extends Controller
 
         return redirect('/products')->with('success', 'Product Deleted');
     }
+    public function sale()
+    {
+        $products= Product::where('in_sale', true)->paginate(8);
+        return view('pages.index')->with('products', $products);
+    }
 }
