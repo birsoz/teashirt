@@ -29,14 +29,24 @@
         {{Form::number('sale_price', '', ['step'=>'0.01'])}}
     </div>
     <div class="form-group">
-        {{Form::label('categories' , 'Categories')}}
-        {{Form::select('categories', array(
-        'Select a category please',
-        'Women' => array('tshirts' => 'T-Shirts', 'jumpers'=> 'Jumpers', 'jackets'=> 'Jackets'),
-        'Men' => array('tshirts' => 'T-Shirts', 'jumpers'=> 'Jumpers', 'jackets'=> 'Jackets'),
-        'Children' => array('tshirts' => 'T-Shirts', 'jumpers'=> 'Jumpers', 'jackets'=> 'Jackets'),
-        'Accessories' => array('totebags' => 'Tote bags', 'bandanas'=> 'Bandanas', 'hats'=> 'Hats'),
-    ))}}
+        {{Form::label('category' , 'Category')}}
+        {{Form::select('category', array(
+        'women'=> 'Women', 'men' => 'Men', 'children' => 'Children', 'accessories' => 'Accessories'),
+        '',
+        ['placeholder' => 'Select a category please'])}}
+    </div>
+    <div class="form-group">
+        {{Form::label('sub_category' , 'Sub Category')}}
+        {{Form::select('sub_category', array(
+        'Women-Men-Children' => array('tshirts' => 'T-Shirts', 'jumpers'=> 'Jumpers', 'jackets'=> 'Jackets'),
+        'Accessories' => array('totebags' => 'Tote bags', 'bandanas'=> 'Bandanas', 'hats'=> 'Hats')),
+        '',
+        ['placeholder' => 'Select a sub-category please'])}}
+    </div>
+    </div>
+    <div class="form-group">
+        {{Form::label('tag' , 'Tags')}}
+        {{Form::text('tag','',['class' => 'form-control', 'placeholder' => ''])}}
     </div>
     {{Form::file('Image_Source')}}
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}

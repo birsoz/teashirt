@@ -56,7 +56,8 @@ class ProductsController extends Controller
             'SKU' => 'required',
             'description'=> 'required',
             'Image_Source'=> 'image|nullable|max:1999',
-            'categories' => 'required',
+            'tag'    => 'string',
+            'tag.*'  => 'string|distinct',
         ]);
         //Getting the name and extension of the image
         if($request->hasFile('Image_Source'))
@@ -88,9 +89,9 @@ class ProductsController extends Controller
         $product-> in_stock = $request->input('in_stock');
         $product-> base_price = $request->input('base_price');
         $product-> sale_price = $request->input('sale_price');
-        $product-> category = $request->input('categories');
-        $product-> sub_category = $request->input('categories');
-        $product-> tag = $request->input('categories');
+        $product-> category = $request->input('category');
+        $product-> sub_category = $request->input('sub_category');
+        $product-> tag = $request->input('tag');
         $product-> user_name = auth()->user()->name;
         $product-> Image_Source = $fileNameToStore;
         $product->save();
@@ -141,10 +142,14 @@ class ProductsController extends Controller
     {
         $this->validate($request,[
             'SKU' => 'required',
-            'description'=> 'required'
+            'description'=> 'required',
+            'Image_Source'=> 'image|nullable|max:1999',
+            // 'tag'    => 'required|string',
+            // //distinct and min:3 doesnt work, tag should be required???
+            // 'tag.*'  => 'string|distinct|min:3',
 
         ]);
-        //Check if the user is an admin
+        //Check if the user is an admin(This seems unnecessary as its not in route and there is a check on edit function)
         if(!Auth()->user()->user_type)
         {
             return redirect('/products')->with('error', 'You are not authorized, please contact your service provider');
@@ -171,9 +176,9 @@ class ProductsController extends Controller
         $product-> in_stock = $request->input('in_stock');
         $product-> base_price = $request->input('base_price');
         $product-> sale_price = $request->input('sale_price');
-        $product-> category = $request->input('categories');
-        $product-> sub_category = $request->input('categories');
-        $product-> tag = $request->input('categories');
+        $product-> category = $request->input('category');
+        $product-> sub_category = $request->input('sub_category');
+        $product-> tag = $request->input('tag');
         $product-> user_name = auth()->user()->name;
         
         
