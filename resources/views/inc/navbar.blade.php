@@ -20,33 +20,33 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Women!</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">T-Shirts</a>
-                    <a class="dropdown-item" href="#">Jumpers</a>
-                    <a class="dropdown-item" href="#">Jackets</a>
+                    <a class="dropdown-item" href="/teashirt/public?filter=women tshirts">T-Shirts</a>
+                    <a class="dropdown-item" href="/teashirt/public?filter=women jumpers">Jumpers</a>
+                    <a class="dropdown-item" href="/teashirt/public?filter=women jackets">Jackets</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Men</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">T-Shirts</a>
-                    <a class="dropdown-item" href="#">Jumpers</a>
-                    <a class="dropdown-item" href="#">Jackets</a>
+                    <a class="dropdown-item" href="/teashirt/public?filter=men tshirts">T-Shirts</a>
+                    <a class="dropdown-item" href="/teashirt/public?filter=men jumpers">Jumpers</a>
+                    <a class="dropdown-item" href="/teashirt/public?filter=men jackets">Jackets</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Children</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">T-Shirts</a>
-                    <a class="dropdown-item" href="#">Jumpers</a>
-                    <a class="dropdown-item" href="#">Jackets</a>
+                    <a class="dropdown-item" href="/teashirt/public?filter=children tshirts">T-Shirts</a>
+                    <a class="dropdown-item" href="/teashirt/public?filter=children jumpers">Jumpers</a>
+                    <a class="dropdown-item" href="/teashirt/public?filter=children jackets">Jackets</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Accessories</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Tote Bags</a>
-                    <a class="dropdown-item" href="#">Bandanas</a>
-                    <a class="dropdown-item" href="#">Hats</a>
+                    <a class="dropdown-item" href="/teashirt/public?filter=accessories totebags">Tote Bags</a>
+                    <a class="dropdown-item" href="/teashirt/public?filter=accessories totebags">Bandanas</a>
+                    <a class="dropdown-item" href="/teashirt/public?filter=accessories totebags">Hats</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -91,7 +91,7 @@
             @endguest
         </ul>  
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" action="ProductsController@index">
+            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search" action="ProductsController@index,">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>

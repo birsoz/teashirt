@@ -22,11 +22,19 @@ class ProductsController extends Controller
         $this->middleware('auth')->except('index', 'show');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::orderBy('id','desc')->paginate(5);
+        if($request->has('search'))
+        {
+            $filter = $request->input('search');
+            $products = Product::where('tag', $filter)->paginate(8);   
+        }
+
         //I will do search results by the following line.
         //$products = Product::where('SKU', 'TS 0005')->get();
+        else{
+        $products = Product::orderBy('id','desc')->paginate(8);
+        }
         return view('pages.index')->with('products', $products);  
     }
 
@@ -56,8 +64,8 @@ class ProductsController extends Controller
             'SKU' => 'required',
             'description'=> 'required',
             'Image_Source'=> 'image|nullable|max:1999',
-            'tag'    => 'string',
-            'tag.*'  => 'string|distinct',
+            // 'tag'    => 'string',
+            // 'tag.*'  => 'string|distinct',
         ]);
         //Getting the name and extension of the image
         if($request->hasFile('Image_Source'))

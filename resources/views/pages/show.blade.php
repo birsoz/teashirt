@@ -1,11 +1,14 @@
 @extends('layouts.app')
 @section('content')
-    <img class="card-img-top" src="/teashirt/public/storage/images/{{$product->Image_Source}}" alt="{{$product->SKU}}">
-    <div class="card-body">
-        <p class="card-text">{{$product->Description}}</p>
-    <div class="d-flex justify-content-between align-items-center">
-    <div class="btn-group">
-        <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+    <div class="col-sm-8 col-md-5">
+        <img class="card-img-top" src="/teashirt/public/storage/images/{{$product->Image_Source}}" alt="{{$product->SKU}}">
+        <div class="card-body">
+            <p class="card-text">{{$product->Description}}</p>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+            </div>
+        </div>
     </div>
     @if (!Auth::guest())
         @if (Auth::user()->user_type)
