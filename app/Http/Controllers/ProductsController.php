@@ -24,10 +24,19 @@ class ProductsController extends Controller
 
     public function index(Request $request)
     {
-        if($request->has('search'))
+        //if user used navbar links
+        if($request->has('filter')){
+            $filter = explode(' ', $request->input('filter'), 2);
+            $products = Product::where([
+            ['category', '=', $filter[0]],
+            ['sub_category', '=', $filter[1]]
+            ])->paginate(8);
+        }
+        //if user used searched button
+        else if($request->has('search'))
         {
             $filter = $request->input('search');
-            $products = Product::where('tag', $filter)->paginate(8);   
+            $products = Product::where('tag', $filter)->paginate(8);
         }
 
         //I will do search results by the following line.

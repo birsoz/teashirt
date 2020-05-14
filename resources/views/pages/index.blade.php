@@ -27,7 +27,8 @@
     <a href="#"><small class="text-muted">{{$products[2]->tag}}</small></a>
 </div> --}}
 @if(count($products) >0)
-<p>{{count($products)}} Results found</p>
+{{--this guy is limited by pagination
+<h4>{{count($products)}} Results found</h4> --}}
 <div class="album py-5 bg-light">
     <div id="#" class="container">
         <div class="row">
@@ -61,8 +62,3 @@
     <h1>No Products found!</h1>
 @endif
 @endsection
-
-
-
-           
-      
