@@ -45,7 +45,9 @@
                                     </a>
                                     <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
                                 </div>
-                                <small class="text-muted">{{$product->tag}}</small>
+                                @foreach (explode(' ', $product->tag) as $tag)
+                                    <a href="?tag={{$tag}}" class="btn btn-sm"><small class="text-muted">{{$tag}}</small></a>
+                                @endforeach
                             </div>
                         </div>
                     </div>

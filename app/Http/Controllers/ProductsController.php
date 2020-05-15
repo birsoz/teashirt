@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use Illuminate\Support\Facades\Storage;
+
+
 class ProductsController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -24,6 +27,9 @@ class ProductsController extends Controller
 
     public function index(Request $request)
     {
+        //sale link should be here too. its a filter anyway
+        //all products should have a condition is_active.
+
         //if user used navbar links
         if($request->has('filter')){
             $filter = explode(' ', $request->input('filter'), 2);
@@ -32,15 +38,98 @@ class ProductsController extends Controller
             ['sub_category', '=', $filter[1]]
             ])->paginate(8);
         }
-        //if user used searched button
-        else if($request->has('search'))
-        {
-            $filter = $request->input('search');
-            $products = Product::where('tag', $filter)->paginate(8);
+        //if user clicked one of the tags
+        else if($request->has('tag')){
+            $tag = $request->input('tag');
+            $products = Product::where('tag', 'like', '%'.$tag.'%')
+            ->orWhere('category', 'like', '%'.$tag.'%')
+            ->orWhere('sub_category', 'like', '%'.$tag.'%')->paginate(8);
         }
+        
+        //if user used searched button
+        else if($request->has('search')){
+            $search= $request->input('search');
+            
+            $products=Product::search($search)->paginate(8);
+        }
+        // {
+        //     $search = explode(' ', $request->input('search'),5);
+            // if(count($search)==5){ 
+                // $products= Product::where('tag', 'like', '%'.$search[0].'%')
+                // ->orWhere('Description', 'like', '%'.$search[0].'%')
+                // ->orWhere('category', 'like', '%'.$search[0].'%')
+                // ->orWhere('sub_category', 'like', '%'.$search[0].'%')
+                // ->orWhere('tag', 'like', '%'.$search[1].'%')
+                // ->orWhere('Description', 'like', '%'.$search[1].'%')
+                // ->orWhere('category', 'like', '%'.$search[1].'%')
+                // ->orWhere('sub_category', 'like', '%'.$search[1].'%')
+                // ->orWhere('tag', 'like', '%'.$search[2].'%')
+                // ->orWhere('Description', 'like', '%'.$search[2].'%')
+                // ->orWhere('category', 'like', '%'.$search[2].'%')
+                // ->orWhere('sub_category', 'like', '%'.$search[2].'%')
+                // ->orWhere('tag', 'like', '%'.$search[3].'%')
+                // ->orWhere('Description', 'like', '%'.$search[3].'%')
+                // ->orWhere('category', 'like', '%'.$search[3].'%')
+                // ->orWhere('sub_category', 'like', '%'.$search[3].'%')
+                // ->orWhere('tag', 'like', '%'.$search[4].'%')
+                // ->orWhere('Description', 'like', '%'.$search[4].'%')
+                // ->orWhere('category', 'like', '%'.$search[4].'%')
+                // ->orWhere('sub_category', 'like', '%'.$search[4].'%')->paginate(8);
+            // }
+            // else if(count($search)==4){ 
+            //     $products= Product::where('tag', 'like', '%'.$search[0].'%')
+            //     ->orWhere('Description', 'like', '%'.$search[0].'%')
+            //     ->orWhere('category', 'like', '%'.$search[0].'%')
+            //     ->orWhere('sub_category', 'like', '%'.$search[0].'%')
+            //     ->orWhere('tag', 'like', '%'.$search[1].'%')
+            //     ->orWhere('Description', 'like', '%'.$search[1].'%')
+            //     ->orWhere('category', 'like', '%'.$search[1].'%')
+            //     ->orWhere('sub_category', 'like', '%'.$search[1].'%')
+            //     ->orWhere('tag', 'like', '%'.$search[2].'%')
+            //     ->orWhere('Description', 'like', '%'.$search[2].'%')
+            //     ->orWhere('category', 'like', '%'.$search[2].'%')
+            //     ->orWhere('sub_category', 'like', '%'.$search[2].'%')
+            //     ->orWhere('tag', 'like', '%'.$search[3].'%')
+            //     ->orWhere('Description', 'like', '%'.$search[3].'%')
+            //     ->orWhere('category', 'like', '%'.$search[3].'%')
+            //     ->orWhere('sub_category', 'like', '%'.$search[3].'%')->paginate(8);
+            //     }
+            // else if(count($search)==3){ 
+            //     $products= Product::where('tag', 'like', '%'.$search[0].'%')
+            //     ->orWhere('Description', 'like', '%'.$search[0].'%')
+            //     ->orWhere('category', 'like', '%'.$search[0].'%')
+            //     ->orWhere('sub_category', 'like', '%'.$search[0].'%')
+            //     ->orWhere('tag', 'like', '%'.$search[1].'%')
+            //     ->orWhere('Description', 'like', '%'.$search[1].'%')
+            //     ->orWhere('category', 'like', '%'.$search[1].'%')
+            //     ->orWhere('sub_category', 'like', '%'.$search[1].'%')
+            //     ->orWhere('tag', 'like', '%'.$search[2].'%')
+            //     ->orWhere('Description', 'like', '%'.$search[2].'%')
+            //     ->orWhere('category', 'like', '%'.$search[2].'%')
+            //     ->orWhere('sub_category', 'like', '%'.$search[2].'%')->paginate(8);
+            //     }
+            // else if(count($search)==2){ 
+            //     $products= Product::where('tag', 'like', '%'.$search[0].'%')
+            //     ->orWhere('Description', 'like', '%'.$search[0].'%')
+            //     ->orWhere('category', 'like', '%'.$search[0].'%')
+            //     ->orWhere('sub_category', 'like', '%'.$search[0].'%')
+            //     ->orWhere('tag', 'like', '%'.$search[1].'%')
+            //     ->orWhere('Description', 'like', '%'.$search[1].'%')
+            //     ->orWhere('category', 'like', '%'.$search[1].'%')
+            //     ->orWhere('sub_category', 'like', '%'.$search[1].'%')->paginate(8);
+            //     }
+            // else if(count($search)==1){ 
+            //     $products= Product::where('tag', 'like', '%'.$search[0].'%')
+            //     ->orWhere('Description', 'like', '%'.$search[0].'%')
+            //     ->orWhere('category', 'like', '%'.$search[0].'%')
+            //     ->orWhere('sub_category', 'like', '%'.$search[0].'%')->paginate(8);
+            //     }            
+        
+            
+        // }   
 
-        //I will do search results by the following line.
-        //$products = Product::where('SKU', 'TS 0005')->get();
+            
+        
         else{
         $products = Product::orderBy('id','desc')->paginate(8);
         }
