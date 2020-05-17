@@ -13,12 +13,8 @@
     <div class="form-group">
         {{Form::label('is_active' , 'Is Active?')}}
         {{Form::checkbox('is_active', true , true)}}
-    </div>
-    <div class="form-group">
         {{Form::label('in_stock' , 'In Stock?')}}
         {{Form::checkbox('in_stock', true , true,)}}
-    </div>
-    <div class="form-group">
         {{Form::label('in_sale' , 'In Sale?')}}
         {{Form::checkbox('in_sale', true , false)}}
     </div>
@@ -34,8 +30,6 @@
         'women'=> 'Women', 'men' => 'Men', 'children' => 'Children', 'accessories' => 'Accessories'),
         '',
         ['placeholder' => 'Select a category please'])}}
-    </div>
-    <div class="form-group">
         {{Form::label('sub_category' , 'Sub Category')}}
         {{Form::select('sub_category', array(
         'Women-Men-Children' => array('tshirts' => 'T-Shirts', 'jumpers'=> 'Jumpers', 'jackets'=> 'Jackets'),

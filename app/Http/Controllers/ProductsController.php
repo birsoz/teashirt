@@ -22,21 +22,28 @@ class ProductsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('index', 'show','sale');
+        $this->middleware('auth')->except('index', 'show');
     }
 
     public function index(Request $request)
     {
-        //sale link should be here too. its a filter anyway
         //all products should have a condition is_active.
 
+        //sale link should be here too. its a filter anyway
+        if($request->has('filter'))
+        {
+            if($request->input('filter')=='sale'){
+                $products = Product::where('in_sale', true)->paginate(8);
+            }
         //if user used navbar links
-        if($request->has('filter')){
+        else{
+    
             $filter = explode(' ', $request->input('filter'), 2);
             $products = Product::where([
             ['category', '=', $filter[0]],
             ['sub_category', '=', $filter[1]]
             ])->paginate(8);
+            }
         }
         //if user clicked one of the tags
         else if($request->has('tag')){
@@ -313,9 +320,5 @@ class ProductsController extends Controller
 
         return redirect('/products')->with('success', 'Product Deleted');
     }
-    public function sale()
-    {
-        $products= Product::where('in_sale', true)->paginate(8);
-        return view('pages.index')->with('products', $products);
-    }
+
 }
