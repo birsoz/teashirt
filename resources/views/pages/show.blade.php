@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
+@if(($product))
     <div class="col-sm-8 col-md-5">
-        <img class="card-img-top" src="/teashirt/public/storage/images/{{$product->Image_Source}}" alt="{{$product->SKU}}">
+        <img class="card-img-top" src="/teashirt/public/storage/images/{{$product->Image_source}}" alt="{{$product->SKU}}">
         <div class="card-body">
             <p class="card-text">{{$product->Description}}</p>
         <div class="d-flex justify-content-between align-items-center">
@@ -20,4 +21,7 @@
         {!! Form::close()!!}
         @endif
     @endif
+@else
+    <h1>No Products found!</h1>
+@endif
 @endsection

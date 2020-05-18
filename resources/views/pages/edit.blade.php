@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@if($product)
     <h1>Edit an Item</h1>
     {!! Form::open(['action' => ['ProductsController@update', $product->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     <div class="form-group">
@@ -51,9 +52,13 @@
         {{Form::text('tag','',['class' => 'form-control', 'placeholder' => 'No tag is recorded for this item'])}}
         @endif
     </div>
-    {{Form::file('Image_Source')}}
+    {{Form::label('file', 'Images(You can select multiple files with mouse,
+    Warning: If you select new files existing files will be deleted!)')}}
+    {{Form::file('image[]', array('multiple'=>true))}}
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
     {{Form::hidden('_method' , 'PUT')}}
     {!! Form::close() !!}
-    
+@else
+    <h1>No Products found!</h1>
+@endif
 @endsection

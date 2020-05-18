@@ -42,7 +42,8 @@
         {{Form::label('tag' , 'Tags')}}
         {{Form::text('tag','',['class' => 'form-control', 'placeholder' => ''])}}
     </div>
-    {{Form::file('Image_Source')}}
+    {{Form::label('file', 'Images(You can select multiple files with mouse)')}}
+    {{Form::file('image[]', array('multiple'=>true))}}
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
 @endsection

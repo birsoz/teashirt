@@ -166,24 +166,31 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'SKU' => 'required',
+            'SKU' => 'required|unique:products',
             'description'=> 'required',
             'Image_Source'=> 'image|nullable|max:1999',
             // 'tag'    => 'string',
             // 'tag.*'  => 'string|distinct',
         ]);
         //Getting the name and extension of the image
-        if($request->hasFile('Image_Source'))
+        if($request->hasFile('image'))
         {
-            //filename with the extension(can cause overwriting)
-            $fileNameWithExt = $request->file('Image_Source')->getClientOriginalName();
-            //Instead i will get filename and the extension seperately to concatenate with timestamp
-            //But lets try this
-            //this works actually but can be hard to look for a specific image
-            //or order by name because they all with start with numbers(time)
-            $fileNameToStore = time()."_".$fileNameWithExt;
-            //$path = $request->file('Image_Source')->storeAs('public/images', $fileNameToStore);
-            $path = $request->file('Image_Source')->storeAs('public/images', $fileNameToStore);
+            foreach($request->file('image') as $image)
+            {
+                $fileNameToStore = time(). '_'. $image->getClientOriginalName();
+                $image->storeAs('public/images/'.$request->input('SKU').'/', $fileNameToStore);
+
+            }
+
+            // //filename with the extension(can cause overwriting)
+            // $fileNameWithExt = $request->file('Image_Source')->getClientOriginalName();
+            // //Instead i will get filename and the extension seperately to concatenate with timestamp
+            // //But lets try this
+            // //this works actually but can be hard to look for a specific image
+            // //or order by name because they all with start with numbers(time)
+            // $fileNameToStore = time()."_".$fileNameWithExt;
+            // //$path = $request->file('Image_Source')->storeAs('public/images', $fileNameToStore);
+            // $path = $request->file('Image_Source')->storeAs('public/images/'.$request->input('SKU').'/', $fileNameToStore);
 
         }
         else{
