@@ -29,7 +29,6 @@ class ProductsController extends Controller
     {
         //all products should have a condition is_active.
 
-        //sale link should be here too. its a filter anyway
         if($request->has('filter'))
         {
             if($request->input('filter')=='sale'){
@@ -63,71 +62,71 @@ class ProductsController extends Controller
         //     $search = explode(' ', $request->input('search'),5);
             // if(count($search)==5){ 
                 // $products= Product::where('tag', 'like', '%'.$search[0].'%')
-                // ->orWhere('Description', 'like', '%'.$search[0].'%')
+                // ->orWhere('description', 'like', '%'.$search[0].'%')
                 // ->orWhere('category', 'like', '%'.$search[0].'%')
                 // ->orWhere('sub_category', 'like', '%'.$search[0].'%')
                 // ->orWhere('tag', 'like', '%'.$search[1].'%')
-                // ->orWhere('Description', 'like', '%'.$search[1].'%')
+                // ->orWhere('description', 'like', '%'.$search[1].'%')
                 // ->orWhere('category', 'like', '%'.$search[1].'%')
                 // ->orWhere('sub_category', 'like', '%'.$search[1].'%')
                 // ->orWhere('tag', 'like', '%'.$search[2].'%')
-                // ->orWhere('Description', 'like', '%'.$search[2].'%')
+                // ->orWhere('description', 'like', '%'.$search[2].'%')
                 // ->orWhere('category', 'like', '%'.$search[2].'%')
                 // ->orWhere('sub_category', 'like', '%'.$search[2].'%')
                 // ->orWhere('tag', 'like', '%'.$search[3].'%')
-                // ->orWhere('Description', 'like', '%'.$search[3].'%')
+                // ->orWhere('description', 'like', '%'.$search[3].'%')
                 // ->orWhere('category', 'like', '%'.$search[3].'%')
                 // ->orWhere('sub_category', 'like', '%'.$search[3].'%')
                 // ->orWhere('tag', 'like', '%'.$search[4].'%')
-                // ->orWhere('Description', 'like', '%'.$search[4].'%')
+                // ->orWhere('description', 'like', '%'.$search[4].'%')
                 // ->orWhere('category', 'like', '%'.$search[4].'%')
                 // ->orWhere('sub_category', 'like', '%'.$search[4].'%')->paginate(8);
             // }
             // else if(count($search)==4){ 
             //     $products= Product::where('tag', 'like', '%'.$search[0].'%')
-            //     ->orWhere('Description', 'like', '%'.$search[0].'%')
+            //     ->orWhere('description', 'like', '%'.$search[0].'%')
             //     ->orWhere('category', 'like', '%'.$search[0].'%')
             //     ->orWhere('sub_category', 'like', '%'.$search[0].'%')
             //     ->orWhere('tag', 'like', '%'.$search[1].'%')
-            //     ->orWhere('Description', 'like', '%'.$search[1].'%')
+            //     ->orWhere('description', 'like', '%'.$search[1].'%')
             //     ->orWhere('category', 'like', '%'.$search[1].'%')
             //     ->orWhere('sub_category', 'like', '%'.$search[1].'%')
             //     ->orWhere('tag', 'like', '%'.$search[2].'%')
-            //     ->orWhere('Description', 'like', '%'.$search[2].'%')
+            //     ->orWhere('description', 'like', '%'.$search[2].'%')
             //     ->orWhere('category', 'like', '%'.$search[2].'%')
             //     ->orWhere('sub_category', 'like', '%'.$search[2].'%')
             //     ->orWhere('tag', 'like', '%'.$search[3].'%')
-            //     ->orWhere('Description', 'like', '%'.$search[3].'%')
+            //     ->orWhere('description', 'like', '%'.$search[3].'%')
             //     ->orWhere('category', 'like', '%'.$search[3].'%')
             //     ->orWhere('sub_category', 'like', '%'.$search[3].'%')->paginate(8);
             //     }
             // else if(count($search)==3){ 
             //     $products= Product::where('tag', 'like', '%'.$search[0].'%')
-            //     ->orWhere('Description', 'like', '%'.$search[0].'%')
+            //     ->orWhere('description', 'like', '%'.$search[0].'%')
             //     ->orWhere('category', 'like', '%'.$search[0].'%')
             //     ->orWhere('sub_category', 'like', '%'.$search[0].'%')
             //     ->orWhere('tag', 'like', '%'.$search[1].'%')
-            //     ->orWhere('Description', 'like', '%'.$search[1].'%')
+            //     ->orWhere('description', 'like', '%'.$search[1].'%')
             //     ->orWhere('category', 'like', '%'.$search[1].'%')
             //     ->orWhere('sub_category', 'like', '%'.$search[1].'%')
             //     ->orWhere('tag', 'like', '%'.$search[2].'%')
-            //     ->orWhere('Description', 'like', '%'.$search[2].'%')
+            //     ->orWhere('description', 'like', '%'.$search[2].'%')
             //     ->orWhere('category', 'like', '%'.$search[2].'%')
             //     ->orWhere('sub_category', 'like', '%'.$search[2].'%')->paginate(8);
             //     }
             // else if(count($search)==2){ 
             //     $products= Product::where('tag', 'like', '%'.$search[0].'%')
-            //     ->orWhere('Description', 'like', '%'.$search[0].'%')
+            //     ->orWhere('description', 'like', '%'.$search[0].'%')
             //     ->orWhere('category', 'like', '%'.$search[0].'%')
             //     ->orWhere('sub_category', 'like', '%'.$search[0].'%')
             //     ->orWhere('tag', 'like', '%'.$search[1].'%')
-            //     ->orWhere('Description', 'like', '%'.$search[1].'%')
+            //     ->orWhere('description', 'like', '%'.$search[1].'%')
             //     ->orWhere('category', 'like', '%'.$search[1].'%')
             //     ->orWhere('sub_category', 'like', '%'.$search[1].'%')->paginate(8);
             //     }
             // else if(count($search)==1){ 
             //     $products= Product::where('tag', 'like', '%'.$search[0].'%')
-            //     ->orWhere('Description', 'like', '%'.$search[0].'%')
+            //     ->orWhere('description', 'like', '%'.$search[0].'%')
             //     ->orWhere('category', 'like', '%'.$search[0].'%')
             //     ->orWhere('sub_category', 'like', '%'.$search[0].'%')->paginate(8);
             //     }            
@@ -166,44 +165,23 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'SKU' => 'required|unique:products',
+            'sku' => 'required|unique:products',
             'description'=> 'required',
-            'Image_Source'=> 'image|nullable|max:1999',
-            // 'tag'    => 'string',
-            // 'tag.*'  => 'string|distinct',
+            // 'image'=> 'image|nullable|max:1999',
         ]);
-        //Getting the name and extension of the image
         if($request->hasFile('image'))
         {
             foreach($request->file('image') as $image)
             {
-                $fileNameToStore = time(). '_'. $image->getClientOriginalName();
-                $image->storeAs('public/images/'.$request->input('SKU').'/', $fileNameToStore);
+                $image->storeAs('public/images/'.$request->input('sku').'/', $image->getClientOriginalName());
 
             }
-
-            // //filename with the extension(can cause overwriting)
-            // $fileNameWithExt = $request->file('Image_Source')->getClientOriginalName();
-            // //Instead i will get filename and the extension seperately to concatenate with timestamp
-            // //But lets try this
-            // //this works actually but can be hard to look for a specific image
-            // //or order by name because they all with start with numbers(time)
-            // $fileNameToStore = time()."_".$fileNameWithExt;
-            // //$path = $request->file('Image_Source')->storeAs('public/images', $fileNameToStore);
-            // $path = $request->file('Image_Source')->storeAs('public/images/'.$request->input('SKU').'/', $fileNameToStore);
-
         }
-        else{
-            $fileNameToStore='logo.png';
-        }
-
+        
         //create a product
         $product=new Product;
-        $product-> SKU = $request->input('SKU');
-        $product-> Description = $request->input('description');
-        // $product-> is_active = $request->has('is_active') ? $request->input('is_active') : NULL;
-        // 'in_stock' => $request->has('in_stock') ? $request->input('in_stock') : NULL;
-        // 'in_sale' => $request->has('in_sale') ? $request->input('in_sale') : NULL;
+        $product-> sku = $request->input('sku');
+        $product-> description = $request->input('description');
         $product-> is_active = $request->input('is_active');
         $product-> in_sale = $request->input('in_sale');
         $product-> in_stock = $request->input('in_stock');
@@ -213,7 +191,14 @@ class ProductsController extends Controller
         $product-> sub_category = $request->input('sub_category');
         $product-> tag = $request->input('tag');
         $product-> user_name = auth()->user()->name;
-        $product-> Image_Source = $fileNameToStore;
+        if($request->hasFile('image'))
+        {
+        $product-> image_source = $request->input('sku');
+        }
+        else
+        {
+            $product-> image_source = 'no_image';
+        }
         $product->save();
 
         return redirect('/products')->with('success', 'Product Created');
@@ -261,12 +246,9 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'SKU' => 'required',
+            'sku' => 'required',
             'description'=> 'required',
-            'Image_Source'=> 'image|nullable|max:1999',
-            // 'tag'    => 'required|string',
-            // //distinct and min:3 doesnt work, tag should be required???
-            // 'tag.*'  => 'string|distinct|min:3',
+            // 'image'=> 'image|nullable|max:1999',
 
         ]);
         //Check if the user is an admin(This seems unnecessary as its not in route and there is a check on edit function)
@@ -274,23 +256,23 @@ class ProductsController extends Controller
         {
             return redirect('/products')->with('error', 'You are not authorized, please contact your service provider');
         }
-        if($request->hasFile('Image_Source'))
+        $product= Product::find($id);
+        //lets check if a new picture is uploaded
+        if($request->hasFile('image'))
         {
-            //filename with the extension(can cause overwriting)
-            $fileNameWithExt = $request->file('Image_Source')->getClientOriginalName();
-            //Instead i will get filename and the extension seperately to concatenate with timestamp
-            //But lets try this
-            //this works actually but can be hard to look for a specific image
-            //or order by name because they all with start with numbers(time)
-            $fileNameToStore = time()."_".$fileNameWithExt;
-            //$path = $request->file('Image_Source')->storeAs('public/images', $fileNameToStore);
-            $path = $request->file('Image_Source')->storeAs('public/images', $fileNameToStore);
-
+            //lets check if there were pictures already
+            if($product->image_source!='no_image'){
+            Storage::deleteDirectory('/public/images/'.$product->sku);}
+            foreach($request->file('image') as $image)
+            {
+            $image->storeAs('public/images/'.$request->input('sku').'/', $image->getClientOriginalName());
+            }
+            $product->image_source = $request->input('sku');
         }
         //edit a product
-        $product= Product::find($id);
-        $product-> SKU = $request->input('SKU');
-        $product-> Description = $request->input('description');
+        
+        $product-> sku = $request->input('sku');
+        $product-> description = $request->input('description');
         $product-> is_active = $request->input('is_active');
         $product-> in_sale = $request->input('in_sale');
         $product-> in_stock = $request->input('in_stock');
@@ -300,12 +282,6 @@ class ProductsController extends Controller
         $product-> sub_category = $request->input('sub_category');
         $product-> tag = $request->input('tag');
         $product-> user_name = auth()->user()->name;
-        
-        
-        //lets check if a new picture is uploaded
-        if($request->hasFile('Image_Source')){
-            $product->Image_Source = $fileNameToStore;
-        }
         $product->save();
 
         return redirect('/products')->with('success', 'Product Edited');
@@ -320,8 +296,8 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         $product= Product::find($id);
-        if($product->Image_Source !='logo.png'){
-            Storage::delete('/public/images/'.$product->Image_Source);
+        if($product->image_source!='no_image'){
+            Storage::deleteDirectory('/public/images/'.$product->sku);
         }
         $product->delete();
 

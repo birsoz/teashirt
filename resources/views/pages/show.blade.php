@@ -2,9 +2,9 @@
 @section('content')
 @if(($product))
     <div class="col-sm-8 col-md-5">
-        <img class="card-img-top" src="/teashirt/public/storage/images/{{$product->Image_source}}" alt="{{$product->SKU}}">
+        <img class="card-img-top" src="/teashirt/public/storage/images/{{$product->image_source}}" alt="{{$product->sku}}">
         <div class="card-body">
-            <p class="card-text">{{$product->Description}}</p>
+            <p class="card-text">{{$product->description}}</p>
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>

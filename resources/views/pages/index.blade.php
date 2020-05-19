@@ -21,12 +21,12 @@
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                   <div class="carousel-inner">
                     @php
-                      $dir = "storage/images/$product->SKU/";
+                      $dir = "storage/images/$product->image_source/";
                       $images = glob($dir."*.*");
                       $i=1;
                       foreach ($images as $image)
                       {                    
-                        if(!($image=="storage/images/$product->SKU/Thumbs.db"))
+                        if(!($image=="storage/images/$product->image_source/Thumbs.db"))
                         {
                           if($i==1){
                           echo '<div class="carousel-item active"><br/>
@@ -52,13 +52,15 @@
                   </a>
                 </div>
               <div class="card-body">
-                <p class="card-text">{{$product->Description}}</p>
+                <p class="card-text">{{$product->description}}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <a href="products/{{$product->id}}">
                         <button type="submit" class="btn btn-sm btn-outline-secondary">View</button>
                     </a>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                    <a href="">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                    </a>
                   </div>
                     @foreach (explode(' ', $product->tag) as $tag)
                         <a href="?tag={{$tag}}" class="btn btn-sm"><small class="text-muted">{{$tag}}</small></a>

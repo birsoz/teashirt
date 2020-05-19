@@ -4,22 +4,18 @@
     <h1>Edit an Item</h1>
     {!! Form::open(['action' => ['ProductsController@update', $product->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     <div class="form-group">
-        {{Form::label('SKU' , 'SKU')}}
-        {{Form::text('SKU', $product->SKU, ['class' => 'form-control', 'placeholder' => 'SKU'])}}
+        {{Form::label('sku' , 'SKU')}}
+        {{Form::text('sku', $product->sku, ['class' => 'form-control', 'placeholder' => 'SKU'])}}
     </div>
     <div class="form-group">
         {{Form::label('description' , 'Description')}}
-        {{Form::textarea('description', $product->Description, ['class' => 'form-control', 'placeholder' => 'Description'])}}
+        {{Form::textarea('description', $product->description, ['class' => 'form-control', 'placeholder' => 'Description'])}}
     </div>
     <div class="form-group">
         {{Form::label('is_active' , 'Is Active?')}}
         {{Form::checkbox('is_active', true, $product->is_active)}}
-    </div>
-    <div class="form-group">
         {{Form::label('in_stock' , 'In Stock?')}}
         {{Form::checkbox('in_stock', true, $product->in_stock)}}
-    </div>
-    <div class="form-group">
         {{Form::label('in_sale' , 'In Sale?')}}
         {{Form::checkbox('in_sale', true, $product->in_sale)}}
     </div>
@@ -35,8 +31,6 @@
         'women'=> 'Women', 'men' => 'Men', 'children' => 'Children', 'accessories' => 'Accessories'),
         $product->category,
         ['placeholder' => 'Select a category please'])}}
-    </div>
-    <div class="form-group">
         {{Form::label('sub_category' , 'Sub Category')}}
         {{Form::select('sub_category', array(
         'Women-Men-Children' => array('tshirts' => 'T-Shirts', 'jumpers'=> 'Jumpers', 'jackets'=> 'Jackets'),

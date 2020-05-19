@@ -3,8 +3,8 @@
     <h1>Create an Item</h1>
     {!! Form::open(['action' => 'ProductsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     <div class="form-group">
-        {{Form::label('SKU' , 'SKU')}}
-        {{Form::text('SKU','',['class' => 'form-control', 'placeholder' => 'SKU'])}}
+        {{Form::label('sku' , 'SKU')}}
+        {{Form::text('sku','',['class' => 'form-control', 'placeholder' => 'SKU'])}}
     </div>
     <div class="form-group">
         {{Form::label('description' , 'Description')}}
