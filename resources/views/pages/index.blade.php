@@ -48,9 +48,9 @@
                   </a>
                 </div>
               <div class="card-body">
-                <p class="card-text">{{$product->description}}</p>
+                <p class="three-lines card-text">{{$product->description}}</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group card-img-overlay">
+                  <div class="btn-group">
                     <a href="products/{{$product->id}}">
                         <button type="submit" class="btn btn-sm btn-outline-secondary">View</button>
                     </a>
@@ -61,10 +61,14 @@
                       <button type="button" class="btn btn-sm btn-outline-secondary">Favourite</button>
                     </a>
                   </div>
-                    @foreach (explode(' ', $product->tag) as $tag)
-                        <a href="?tag={{$tag}}" class="btn btn-sm"><small class="text-muted">{{$tag}}</small></a>
-                    @endforeach
                 </div>
+                @if($product->tag)
+                <div style="margin-top:8px" class="card-footer">
+                  @foreach (explode(' ', $product->tag) as $tag)
+                      <a href="?tag={{$tag}}" class="btn btn-sm"><small class="text-muted">{{$tag}}</small></a>
+                  @endforeach
+                </div>
+                @endif
               </div>
             </div>
           </div>
