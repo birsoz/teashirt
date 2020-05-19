@@ -1,15 +1,50 @@
 @extends('layouts.app')
 @section('content')
 @if(($product))
-    <div class="col-sm-8 col-md-5">
-        <img class="card-img-top" src="/teashirt/public/storage/images/{{$product->image_source}}" alt="{{$product->sku}}">
-        <div class="card-body">
-            <p class="card-text">{{$product->description}}</p>
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
-            </div>
+  <div class="col-sm-10 col-md-7">
+    <div id="carouselExampleIndicators-{{$product->id}}" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        @php
+          $dir = "storage/images/$product->image_source/";
+          $images = glob($dir."*.*");
+          $i=1;
+          echo print_r($images);
+          foreach ($images as $image)
+          {                    
+            if(!($image=="storage/images/$product->image_source/Thumbs.db"))
+            {
+              if($i==1){
+              echo '<div class="carousel-item active"><br/>
+                  <img class="d-block w-100" src="/teashirt/public/'.$image.'"  alt="Image '.$i.'" /><br />
+              </div><br/>';}
+              else
+              {
+              echo '<div class="carousel-item"><br/>
+                  <img class="d-block w-100" src="/teashirt/public/'.$image.'"  alt=Image '.$i.' /><br />
+              </div><br/>';}  
+            }
+            $i++;
+          }
+          
+        @endphp
         </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators-{{$product->id}}" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators-{{$product->id}}" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+      </div> 
+    </div>       
+    <div class="card-body">
+      <p class="card-text">{{$product->description}}</p>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+        </div>
+      </div>
     </div>
     @if (!Auth::guest())
         @if (Auth::user()->user_type)
