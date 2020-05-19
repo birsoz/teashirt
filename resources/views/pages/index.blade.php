@@ -50,12 +50,15 @@
               <div class="card-body">
                 <p class="card-text">{{$product->description}}</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
+                  <div class="btn-group card-img-overlay">
                     <a href="products/{{$product->id}}">
                         <button type="submit" class="btn btn-sm btn-outline-secondary">View</button>
                     </a>
                     <a href="">
                       <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                    </a>
+                    <a href="">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Favourite</button>
                     </a>
                   </div>
                     @foreach (explode(' ', $product->tag) as $tag)

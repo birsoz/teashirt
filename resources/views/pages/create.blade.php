@@ -11,13 +11,19 @@
         {{Form::textarea('description','',['class' => 'form-control', 'placeholder' => 'Description'])}}
     </div>
     <div class="form-group">
-        {{Form::label('is_active' , 'Is Active?')}}
-        {{Form::checkbox('is_active', true , true)}}
-        {{Form::label('in_stock' , 'In Stock?')}}
-        {{Form::checkbox('in_stock', true , true,)}}
-        {{Form::label('in_sale' , 'In Sale?')}}
-        {{Form::checkbox('in_sale', true , false)}}
-    </div>
+        <div class="custom-control custom-switch">
+            {{Form::checkbox('is_active', true, true,['id' => 'is_active', 'class' => 'custom-control-input'])}}
+            {{Form::label('is_active' , 'Is Active?', ['class' => 'custom-control-label'])}}
+        </div>
+        <div class="custom-control custom-switch">
+            {{Form::checkbox('in_stock', true, true,['id' => 'in_stock', 'class' => 'custom-control-input'])}}
+            {{Form::label('in_stock' , 'In Stock?', ['class' => 'custom-control-label'])}}
+        </div>
+        <div class="custom-control custom-switch">
+            {{Form::checkbox('in_sale', true, false,['id' => 'in_sale', 'class' => 'custom-control-input'])}}
+            {{Form::label('in_sale' , 'In Sale?', ['class' => 'custom-control-label'])}}
+        </div>
+    </div>    
     <div class="form-group">
         {{Form::label('base_price' , 'Base Price')}}
         {{Form::number('base_price', '', ['step'=>'0.01'])}}

@@ -12,12 +12,18 @@
         {{Form::textarea('description', $product->description, ['class' => 'form-control', 'placeholder' => 'Description'])}}
     </div>
     <div class="form-group">
-        {{Form::label('is_active' , 'Is Active?')}}
-        {{Form::checkbox('is_active', true, $product->is_active)}}
-        {{Form::label('in_stock' , 'In Stock?')}}
-        {{Form::checkbox('in_stock', true, $product->in_stock)}}
-        {{Form::label('in_sale' , 'In Sale?')}}
-        {{Form::checkbox('in_sale', true, $product->in_sale)}}
+        <div class="custom-control custom-switch">
+            {{Form::checkbox('is_active', true, $product->is_active,['id' => 'is_active', 'class' => 'custom-control-input'])}}
+            {{Form::label('is_active' , 'Is Active?', ['class' => 'custom-control-label'])}}
+        </div>
+        <div class="custom-control custom-switch">
+            {{Form::checkbox('in_stock', true, $product->in_stock,['id' => 'in_stock', 'class' => 'custom-control-input'])}}
+            {{Form::label('in_stock' , 'In Stock?', ['class' => 'custom-control-label'])}}
+        </div>
+        <div class="custom-control custom-switch">
+            {{Form::checkbox('in_sale', true, $product->in_sale,['id' => 'in_sale', 'class' => 'custom-control-input'])}}
+            {{Form::label('in_sale' , 'In Sale?', ['class' => 'custom-control-label'])}}
+        </div>
     </div>
     <div class="form-group">
         {{Form::label('base_price' , 'Base Price')}}

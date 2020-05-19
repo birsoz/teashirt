@@ -8,7 +8,6 @@
           $dir = "storage/images/$product->image_source/";
           $images = glob($dir."*.*");
           $i=1;
-          echo print_r($images);
           foreach ($images as $image)
           {                    
             if(!($image=="storage/images/$product->image_source/Thumbs.db"))
