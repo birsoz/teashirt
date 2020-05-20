@@ -284,7 +284,7 @@ class ProductsController extends Controller
         $product-> user_name = auth()->user()->name;
         $product->save();
 
-        return redirect('/products')->with('success', 'Product Edited');
+        return redirect('/products/'.$id)->with('success', 'Product Edited');
     }
 
     /**

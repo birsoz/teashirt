@@ -29,7 +29,7 @@
 </head>
 <body>
     @include('inc.navbar')
-        <div class="col-xs-12 col-sm-12 container">
+        <div class="container-fluid">
             @include('inc.messages')
             @yield('content')
         </div>

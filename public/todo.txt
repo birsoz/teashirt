@@ -1,0 +1,7 @@
+1. fix height for carousel in main page or even all products rolling in one carousel
+2. responsiveness!!!
+3. cart page
+4. payment implementation
+5. dashboard page maybe cart and favourites last orders personal details(card details address details billing details) etc
+6. for admins (dashboard) last edited products desc by updated or created date
+7. email verification should be implemented
