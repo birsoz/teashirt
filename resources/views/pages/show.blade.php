@@ -1,6 +1,24 @@
 @extends('layouts.app')
 @section('content')
 @if(($product))
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="..." class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <div class="custom-control custom-switch">
+          {{Form::checkbox('in_sale', true, $product->in_sale,['disabled id' => 'in_sale', 'class' => 'custom-control-input'])}}
+          {{Form::label('in_sale' , 'Sale Status', ['class' => 'custom-control-label'])}}
+        </div>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
   <div class="col-sm-10 col-md-7">
     <div id="carouselExampleIndicators-{{$product->id}}" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
@@ -26,6 +44,9 @@
           }
           
         @endphp
+
+      
+
         </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators-{{$product->id}}" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

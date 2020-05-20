@@ -7,14 +7,14 @@
 @if(count($products) >0)
 {{--this guy is limited by pagination
 <h4>{{count($products)}} Results found</h4> --}}
-<div class="album py-5 bg-light">
+<div class="col-xs-12 col-sm-12 album py-5 bg-light">
   <div class="container">
     <div class="row">
       @foreach ($products  as $product)
-            <div class="col-sm-6 col-md-3">
+            <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
               <div class="card mb-4 box-shadow">
                 <div id="carouselExampleIndicators-{{$product->id}}" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner">
+                  <div class="carousel-inner">
                     @php
                       $dir = "storage/images/$product->image_source/";
                       $images = glob($dir."*.*");
@@ -49,23 +49,28 @@
                 </div>
               <div class="card-body">
                 <p class="three-lines card-text">{{$product->description}}</p>
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="card-group justify-content-center">
+              @if ($product->base_price)
+                @if ($product->in_sale)
+                  <a title="Go to Sale!" href="?filter=sale"><i class="fas fa-tag mr-2 mt-1"></i></a>
+                  <h5 class="card-text mr-3"><del>{{$product->base_price}} €</del></h5>
+                  <h5 class="card-text">{{$product->sale_price}} €</h5>
+                @else           
+                  <h5 class="card-text">{{$product->base_price}} €</h5>
+                @endif
+              @endif
+            </div>
+               <div class="d-flex justify-content-center">
                   <div class="btn-group">
-                    <a href="products/{{$product->id}}">
-                        <button type="submit" class="btn btn-sm btn-outline-secondary">View</button>
-                    </a>
-                    <a href="">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
-                    </a>
-                    <a href="">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Favourite</button>
-                    </a>
+                    <a title="View" class="btn btn-sm btn-outline-secondary" href="products/{{$product->id}}"><i class="fas fa-eye"></i></a>
+                    <a title="Add to Cart!" href="" class="btn btn-sm btn-outline-secondary"><i class="fas fa-cart-arrow-down"></i></a>
+                    <a title="Add to Favourites!" href="" class="btn btn-sm btn-outline-secondary"><i class="fas fa-heart"></i></a>
                   </div>
                 </div>
                 @if($product->tag)
-                <div style="margin-top:8px" class="card-footer">
+                <div style="border:none" class="card-footer two-lines">
                   @foreach (explode(' ', $product->tag) as $tag)
-                      <a href="?tag={{$tag}}" class="btn btn-sm"><small class="text-muted">{{$tag}}</small></a>
+                      <a title="Go to tag ' {{$tag}} ' " href="?tag={{$tag}}" class="btn btn-sm justify-content-center"><small class="text-muted">{{$tag}}</small></a>
                   @endforeach
                 </div>
                 @endif

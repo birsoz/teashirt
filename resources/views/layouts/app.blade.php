@@ -10,6 +10,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    {{--Font Awesome--}}
+    <script src="https://kit.fontawesome.com/660a7a33a0.js" crossorigin="anonymous"></script>
     {{-- This Prevents dropdown on Navbar from working --}}
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
@@ -27,7 +29,7 @@
 </head>
 <body>
     @include('inc.navbar')
-        <div class="container">
+        <div class="col-xs-12 col-sm-12 container">
             @include('inc.messages')
             @yield('content')
         </div>
