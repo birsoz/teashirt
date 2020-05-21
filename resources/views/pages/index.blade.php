@@ -5,9 +5,63 @@
     <h3 style="display:inline-block">Welcome to Teashirt</h3>
 </div>
 @if(count($products) >0)
-{{--this guy is limited by pagination
-<h4>{{count($products)}} Results found</h4> --}}
+{{--this guy is limited by pagination   
+<h4>{{count($products)}} Results found</h4>--}}
 <div class="container-fluid">
+  <div class="container my-4">
+    <hr class="my-4">
+    <!--Carousel Wrapper-->
+    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+        <!--First slide-->
+        <div class="carousel-item active">
+          <div class="row">
+            @foreach ($products as $product)
+              @php
+                $dir = "storage/images/$product->image_source/";
+                $images = glob($dir."*.*");
+              @endphp
+              @if (($loop->iteration)%3==1){{--for every first item in the row--}}
+                <div class="col-md-4 clearfix d-none d-md-block">
+              @else
+                <div class="col-md-4">
+              @endif
+                <div class="card mb-2">
+                  <img class="card-img-top" src="{{$images[1]}}"alt="{{$loop->iteration}}">
+                  <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
+                    <a class="btn btn-primary">Button</a>
+                  </div>
+                </div>
+                </div>
+              
+              @if (($loop->iteration)%3==0){{--close 3 columns in active row--}}
+          </div>
+        </div>
+                @if ($loop!='last')
+                <div class="carousel-item">
+                <div class="row">
+                @endif
+              @endif
+            @endforeach
+            {{-- If loop ends without reaching the closing of the row--}}
+            {{-- @if ((count($products))%3!=0)
+          <div>
+        <div>
+            @endif --}}
+
+      </div></div></div>
+      <div class="d-flex justify-content-center">
+        <a title=previous class="btn-floating mx-4" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left fa-3x"></i></a>
+        <a title=next class="btn-floating mx-4" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right fa-3x"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{--
   <div class="row">
     @foreach ($products  as $product)
           <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-2">
@@ -46,7 +100,7 @@
                   <span class="sr-only">Next</span>
                 </a>
               </div>
-            <div class="card-body">
+              <div class="card-body">
               <p class="three-lines card-text">{{$product->description}}</p>
               <div class="card-group justify-content-center">
             @if ($product->base_price)
@@ -78,7 +132,7 @@
         </div>
       @endforeach
   </div>
-</div>
+</div> --}}
 {{-- pagination links --}}
 <div class="container">
   {{$products->links()}}
