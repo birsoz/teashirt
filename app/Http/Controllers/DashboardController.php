@@ -24,6 +24,8 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
+
+    
         if($request->has('filter'))
         {
             $filter=$request->input('filter');

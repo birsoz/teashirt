@@ -2,8 +2,8 @@
 +2. responsiveness!!!
 3. cart page
 4. payment implementation
-5. dashboard page maybe cart and favourites last orders personal details(card details address details billing details) etc
-6. for admins (dashboard) last edited products desc by updated or created date
++5. dashboard page maybe cart and favourites last orders personal details(card details address details billing details) etc
++6. for admins (dashboard) last edited products desc by updated or created date
 7. email verification should be implemented
 8. carousel arrows responding keyboard(can be good for mobile swiping)
 9. dashboard controller has a good filtering now but could have been better to have a detailed search
