@@ -62,17 +62,17 @@
       <div class="d-flex flex-row lign-items-end justify-content-end">
         @if(!Auth::guest())
           @if (Auth::user()->user_type)
-          <div class="custom-control custom-switch">
+          <div class="custom-control custom-switch mr-2">
             {{Form::checkbox('is_active', true, $product->is_active,['disabled id' => 'is_active', 'class' => 'custom-control-input'])}}
             {{Form::label('is_active' , 'Active Status', ['class' => 'custom-control-label'])}}
           </div>
           @endif
         @endif
-        <div class="custom-control custom-switch">
+        <div class="custom-control custom-switch mr-2">
           {{Form::checkbox('in_stock', true, $product->in_stock,['disabled id' => 'in_stock', 'class' => 'custom-control-input'])}}
           {{Form::label('in_stock' , 'Stock Status', ['class' => 'custom-control-label'])}}
         </div>
-        <div class="custom-control custom-switch">
+        <div class="custom-control custom-switch mr-2">
           {{Form::checkbox('in_sale', true, $product->in_sale,['disabled id' => 'in_sale', 'class' => 'custom-control-input'])}}
           {{Form::label('in_sale' , 'Sale Status', ['class' => 'custom-control-label'])}}
         </div>
