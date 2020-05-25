@@ -43,7 +43,6 @@
         '',
         ['placeholder' => 'Select a sub-category please'])}}
     </div>
-    </div>
     <div class="form-group">
         {{Form::label('tag' , 'Tags')}}
         {{Form::text('tag','',['class' => 'form-control', 'placeholder' => ''])}}

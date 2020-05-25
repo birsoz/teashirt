@@ -21,10 +21,10 @@
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             @if(Auth::user()->user_type)
                                 <div class="navbar-nav">
-                                    <a class="nav-item nav-link active" href="#">Recent edits <span class="sr-only">(current)</span></a>
-                                    <a class="nav-item nav-link active" href="#">Inactive items</a>
-                                    <a class="nav-item nav-link active" href="#">Items that edited by someone else</a>
-                                    <a class="nav-item nav-link active" href="#">Incomplete items!</a>
+                                    <a class="nav-item nav-link active" href="?filter=recent">Recent edits <span class="sr-only">(current)</span></a>
+                                    <a class="nav-item nav-link active" href="?filter=inactive">Inactive items</a>
+                                    <a class="nav-item nav-link active" href="?filter=else">Items that edited by someone else</a>
+                                    <a class="nav-item nav-link active" href="?filter=incomplete">Incomplete items!</a>
                                 </div>
                             @else
                             <div class="navbar-nav">
@@ -40,7 +40,9 @@
                 </div>
 
                 <div class="card-body">
-                   
+                   @foreach ($products as $product)
+                       {{$product->id}} <br>
+                   @endforeach
                     
             </div>
         </div>
