@@ -57,27 +57,28 @@
             @endforeach
           </div>
         @endif
-        <div class="d-flex justify-content-center align-content-end mt-auto flex-row">
-          @if(!Auth::guest())
-            @if (Auth::user()->user_type)
-            <div class="custom-control custom-switch">
-              {{Form::checkbox('is_active', true, $product->is_active,['disabled id' => 'is_active', 'class' => 'custom-control-input'])}}
-              {{Form::label('is_active' , 'Active Status', ['class' => 'custom-control-label'])}}
-            </div>
-            @endif
+      
+      </div>
+      <div class="d-flex flex-row lign-items-end justify-content-end">
+        @if(!Auth::guest())
+          @if (Auth::user()->user_type)
+          <div class="custom-control custom-switch">
+            {{Form::checkbox('is_active', true, $product->is_active,['disabled id' => 'is_active', 'class' => 'custom-control-input'])}}
+            {{Form::label('is_active' , 'Active Status', ['class' => 'custom-control-label'])}}
+          </div>
           @endif
-          <div class="custom-control custom-switch">
-            {{Form::checkbox('in_stock', true, $product->in_stock,['disabled id' => 'in_stock', 'class' => 'custom-control-input'])}}
-            {{Form::label('in_stock' , 'Stock Status', ['class' => 'custom-control-label'])}}
-          </div>
-          <div class="custom-control custom-switch">
-            {{Form::checkbox('in_sale', true, $product->in_sale,['disabled id' => 'in_sale', 'class' => 'custom-control-input'])}}
-            {{Form::label('in_sale' , 'Sale Status', ['class' => 'custom-control-label'])}}
-          </div>
-          <div class="ml-4 btn-group">
-            <a title="Add to Cart!" href="" class="btn btn-outline-secondary"><i class="fas fa-cart-arrow-down"></i></a>
-            <a title="Add to Favourites!" href="" class="btn btn-outline-secondary"><i class="fas fa-heart"></i></a>
-          </div>
+        @endif
+        <div class="custom-control custom-switch">
+          {{Form::checkbox('in_stock', true, $product->in_stock,['disabled id' => 'in_stock', 'class' => 'custom-control-input'])}}
+          {{Form::label('in_stock' , 'Stock Status', ['class' => 'custom-control-label'])}}
+        </div>
+        <div class="custom-control custom-switch">
+          {{Form::checkbox('in_sale', true, $product->in_sale,['disabled id' => 'in_sale', 'class' => 'custom-control-input'])}}
+          {{Form::label('in_sale' , 'Sale Status', ['class' => 'custom-control-label'])}}
+        </div>
+        <div class="ml-4 btn-group">
+          <a title="Add to Cart!" href="" class="btn btn-outline-secondary"><i class="fas fa-cart-arrow-down"></i></a>
+          <a title="Add to Favourites!" href="" class="btn btn-outline-secondary"><i class="fas fa-heart"></i></a>
         </div>
       </div>
     </div>

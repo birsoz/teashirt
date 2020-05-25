@@ -28,11 +28,34 @@
                 <div class="col-md-4">
               @endif
                 <div class="card mb-2">
-                  <img class="card-img-top" src="{{$images[1]}}"alt="{{$loop->iteration}}">
+                  <img class="card-img-top" src="{{$images[1]}}"alt="image {{$loop->iteration}}">
                   <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-                    <a class="btn btn-primary">Button</a>
+                    <p class="three-lines card-text">{{$product->description}}</p>
+                    <div class="card-group justify-content-center">
+                      @if ($product->base_price)
+                        @if ($product->in_sale)
+                          <a title="Go to Sale!" href="?filter=sale"><i class="fas fa-tag mr-2 mt-1"></i></a>
+                          <h5 class="card-text mr-3"><del>{{$product->base_price}} €</del></h5>
+                          <h5 class="card-text">{{$product->sale_price}} €</h5>
+                        @else           
+                          <h5 class="card-text">{{$product->base_price}} €</h5>
+                        @endif
+                      @endif
+                    </div>
+                    <div class="d-flex justify-content-center">
+                      <div class="btn-group">
+                        <a title="View" class="btn btn-sm btn-outline-secondary" href="products/{{$product->id}}"><i class="fas fa-eye"></i></a>
+                        <a title="Add to Cart!" href="" class="btn btn-sm btn-outline-secondary"><i class="fas fa-cart-arrow-down"></i></a>
+                        <a title="Add to Favourites!" href="" class="btn btn-sm btn-outline-secondary"><i class="fas fa-heart"></i></a>
+                      </div>
+                    </div>
+                    @if($product->tag)
+                      <div style="border:none" class="card-footer two-lines">
+                        @foreach (explode(' ', $product->tag) as $tag)
+                            <a title="Go to tag ' {{$tag}} ' " href="?tag={{$tag}}" class="btn btn-sm justify-content-center"><small class="text-muted">{{$tag}}</small></a>
+                        @endforeach
+                      </div>
+                    @endif
                   </div>
                 </div>
                 </div>
@@ -103,16 +126,16 @@
               <div class="card-body">
               <p class="three-lines card-text">{{$product->description}}</p>
               <div class="card-group justify-content-center">
-            @if ($product->base_price)
-              @if ($product->in_sale)
-                <a title="Go to Sale!" href="?filter=sale"><i class="fas fa-tag mr-2 mt-1"></i></a>
-                <h5 class="card-text mr-3"><del>{{$product->base_price}} €</del></h5>
-                <h5 class="card-text">{{$product->sale_price}} €</h5>
-              @else           
-                <h5 class="card-text">{{$product->base_price}} €</h5>
-              @endif
-            @endif
-          </div>
+                @if ($product->base_price)
+                  @if ($product->in_sale)
+                    <a title="Go to Sale!" href="?filter=sale"><i class="fas fa-tag mr-2 mt-1"></i></a>
+                    <h5 class="card-text mr-3"><del>{{$product->base_price}} €</del></h5>
+                    <h5 class="card-text">{{$product->sale_price}} €</h5>
+                  @else           
+                    <h5 class="card-text">{{$product->base_price}} €</h5>
+                  @endif
+                @endif
+              </div>
               <div class="d-flex justify-content-center">
                 <div class="btn-group">
                   <a title="View" class="btn btn-sm btn-outline-secondary" href="products/{{$product->id}}"><i class="fas fa-eye"></i></a>
@@ -121,11 +144,11 @@
                 </div>
               </div>
               @if($product->tag)
-              <div style="border:none" class="card-footer two-lines">
-                @foreach (explode(' ', $product->tag) as $tag)
-                    <a title="Go to tag ' {{$tag}} ' " href="?tag={{$tag}}" class="btn btn-sm justify-content-center"><small class="text-muted">{{$tag}}</small></a>
-                @endforeach
-              </div>
+                <div style="border:none" class="card-footer two-lines">
+                  @foreach (explode(' ', $product->tag) as $tag)
+                      <a title="Go to tag ' {{$tag}} ' " href="?tag={{$tag}}" class="btn btn-sm justify-content-center"><small class="text-muted">{{$tag}}</small></a>
+                  @endforeach
+                </div>
               @endif
             </div>
           </div>
