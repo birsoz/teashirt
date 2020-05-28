@@ -151,7 +151,7 @@ class ProductsController extends Controller
     {
         if(!Auth()->user()->user_type)
     {
-        return redirect('/products')->with('error', 'You are not authorized, please contact your service provider');
+        return redirect('/products')->with('error', 'You are not authorized, please contact to your service provider');
     }
         return view('pages.create');
     }
