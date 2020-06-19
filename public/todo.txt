@@ -6,4 +6,5 @@
 +6. for admins (dashboard) last edited products desc by updated or created date
 7. email verification should be implemented
 8. carousel arrows responding keyboard(can be good for mobile swiping)
-9. dashboard controller has a good filtering now but could have been better to have a detailed search
+9. Admin dashboard controller can have a detailed search 
+10. search validation, other validation?(bootstrap??php&html)

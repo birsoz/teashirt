@@ -72,16 +72,20 @@
                       <div class="col-md-6">
                         <div class="card-body container">
                           <p class="card-text three-lines">{{$product->description}}</p>
-                          <div class="card-group justify-content-center">
+                          <div class="card-group d-flex justify-content-center align-items-center">
                             @if ($product->base_price)
                               @if ($product->in_sale)
-                                <a title="Go to Sale!" href="?filter=sale"><i class="fas fa-tag mr-2 mt-1"></i></a>
+                                <a title="Go to Sale!" href="?filter=sale"><i class="fas fa-tag mr-2"></i></a>
                                 <h5 class="card-text mr-3"><del>{{$product->base_price}} €</del></h5>
                                 <h5 class="card-text">{{$product->sale_price}} €</h5>
                               @else           
                                 <h5 class="card-text">{{$product->base_price}} €</h5>
                               @endif
                             @endif
+                            {{-- <label class="input-group-text custom-select" for="inputGroupSelect01">Options</label> --}}
+                            <input class="mx-2 col-2 custom-select mb-2 mr-sm-2 mb-sm-0" min="1" max="10" type="number" name="quantity" value="1" id="">
+                          
+                            <h5 class="card-text">{{$product->base_price}}  €</h5>
                           </div>
                           @if($product->tag)
                             <div style="border:none" class="card-footer two-lines">
@@ -121,5 +125,27 @@
               </div>
           </div>
       </div>
+  </div>
+  {{-- <div class="container">
+    <div class="row">
+      <h2>Simple Quantity increment buttons with Javascript </h2>
+          
+          
+                          <div class="col-lg-2">
+                                          <div class="input-group">
+                                      <span class="input-group-btn">
+                                          <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
+                                            <span class="glyphicon glyphicon-minus"></span>
+                                          </button>
+                                      </span>
+                                      <input type="text" id="quantity" name="quantity" class="form-control input-number" value="10" min="1" max="100">
+                                      <span class="input-group-btn">
+                                          <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                                              <span class="glyphicon glyphicon-plus"></span>
+                                          </button>
+                                      </span>
+                                  </div>
+                          </div>
+    </div> --}}
   </div>
 @endsection
