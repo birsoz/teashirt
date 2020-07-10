@@ -8,3 +8,5 @@
 8. carousel arrows responding keyboard(can be good for mobile swiping)
 9. Admin dashboard controller can have a detailed search 
 10. search validation, other validation?(bootstrap??php&html)
+11. Guest should be redirected to login when clicked on fav or add to cart
+12. add to favourites and cart should give  a feedback.
