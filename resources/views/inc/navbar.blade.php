@@ -76,8 +76,8 @@
                         @if (Auth::user()->user_type)
                             <a class="dropdown-item" href="/teashirt/public/products/create" tabindex="-1" aria-disabled="true">Add an Item</a>
                         @else
-                            <a class="dropdown-item" href="/teashirt/public/cart" tabindex="-1" aria-disabled="true">My Cart</a>
-                            <a class="dropdown-item" href="/teashirt/public/cart" tabindex="-1" aria-disabled="true">My Favourites</a>
+                            <a class="dropdown-item" href="/teashirt/public/dashboard?show=cart" tabindex="-1" aria-disabled="true">My Cart</a>
+                            <a class="dropdown-item" href="/teashirt/public/dashboard?show=favourites" tabindex="-1" aria-disabled="true">My Favourites</a>
                         @endif
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
