@@ -84,8 +84,14 @@
                             @endif
                             {{-- <label class="input-group-text custom-select" for="inputGroupSelect01">Options</label> --}}
                             <input class="mx-2 col-2 custom-select mb-2 mr-sm-2 mb-sm-0" min="1" max="10" type="number" name="quantity" value="1" id="">
-                          
+                            {{-- ///here we need some sale price --}}
+                           @if ($product->in_sale)
+                           <h5 class="card-text">{{$product->sale_price}}  €</h5>
+                            @else
+                                
+                            
                             <h5 class="card-text">{{$product->base_price}}  €</h5>
+                            @endif
                           </div>
                           @if($product->tag)
                             <div style="border:none" class="card-footer two-lines">
